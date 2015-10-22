@@ -1,0 +1,77 @@
+.reveal table td {
+    line-height: 1.2 !important;
+    text-align: center;
+    font-size: 0.45em;
+}
+
+.reveal table th {
+    line-height: 1.2 !important;
+    text-align: center;
+    font-size: 0.5em;
+}
+.reveal h2 {
+  font-size: 1.5em;
+}
+
+.owasp .heading {
+  background-color: rgb(77, 149, 61);
+  border: 3px solid rgb(68, 68, 68);
+  height: 1em;
+  color: rgb(255, 255, 255);
+  text-shadow: rgb(0, 0, 0) 2px 2px 8px;
+}
+
+.owasp th {
+  border: 3px solid rgb(68, 68, 68);
+}
+
+td.owasp-very-high {
+  background-color: rgb(255, 0, 255);
+  color: rgb(0, 0, 0);
+  border: 3px solid rgb(68, 68, 68);
+}
+
+td.owasp-high {
+  background-color: rgb(255, 0, 0);
+  color: rgb(0, 0, 0);
+  border: 3px solid rgb(68, 68, 68);
+}
+
+td.owasp-medium {
+  background-color: rgb(255, 178, 0);
+  color: rgb(0, 0, 0);
+  border: 3px solid rgb(68, 68, 68);
+}
+
+td.owasp-low {
+  background-color: rgb(255, 255, 0);
+  color: rgb(0, 0, 0);
+  border: 3px solid rgb(68, 68, 68);
+}
+
+td.owasp-none {
+  font-weight: bold;
+  background-color: rgb(217, 217, 217);
+  color: rgb(0, 0, 0);
+  border: 3px solid rgb(68, 68, 68);
+}
+
+td.owasp-body {
+  text-align: left !important;
+  border: 3px solid rgb(68, 68, 68);
+  padding-left: 9px;
+  padding-right: 9px;
+}
+
+table.owasp-table {
+  border-collapse: collapse;
+  text-align: center;
+  margin: 0px 5px;
+  border: 3px solid rgb(68, 68, 68);
+  background-color: rgb(248, 255, 248);
+}
+
+.squeeze {
+  font-size: 0.6em !important;
+  line-height: 1.2em !important;
+}

